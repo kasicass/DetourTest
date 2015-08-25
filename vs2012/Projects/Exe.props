@@ -9,6 +9,7 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>$(SolutionDir)..\src\DetourLib\</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WINDLL;DETOURS_BITS=32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)..\Lib\$(Configuration)\</AdditionalLibraryDirectories>

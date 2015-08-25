@@ -1,2 +1,19 @@
-NOTE: dll needs '/export:DetourFinishHelperProcess,@1,NONAME', then withdll.exe runs ok.
+
+==== simple ====
+setdll.exe -d:simple.dll sleep5.exe
+sleep5.exe
+setdll.exe -r sleep5.exe
+
+withdll.exe -d:simple.dll sleep5.exe
+
+
+==== syelog ====
+start syelogd.exe test.txt
+sltest.exe
+sltest.exe /x            # /x to exit syelogd.exe
+type test.txt
+
+
+==== NOTE ====
+dll needs '/export:DetourFinishHelperProcess,@1,NONAME', then withdll.exe runs ok.
 

@@ -1,0 +1,2 @@
+NOTE: dll needs '/export:DetourFinishHelperProcess,@1,NONAME', then withdll.exe runs ok.
+

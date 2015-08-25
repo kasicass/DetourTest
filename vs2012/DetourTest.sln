@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DetourLib", "Projects\DetourLib.vcxproj", "{58166FE6-667F-40CC-8049-F69F37F637C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Libs", "0 - Libs", "{AADA8719-AE49-44E8-9EAD-92CF90906C10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Tools", "1 - Tools", "{00AA53CE-4CB9-4B11-B70D-405C1E855A4B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Samples", "2 - Samples", "{50B8D218-F209-4D50-BFA1-4F404292C013}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "withdll", "Projects\withdll.vcxproj", "{DAEFEAE3-E64A-4953-B629-8A1424FABC70}"
+	ProjectSection(ProjectDependencies) = postProject
+		{58166FE6-667F-40CC-8049-F69F37F637C6} = {58166FE6-667F-40CC-8049-F69F37F637C6}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58166FE6-667F-40CC-8049-F69F37F637C6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{58166FE6-667F-40CC-8049-F69F37F637C6}.Debug|Win32.Build.0 = Debug|Win32
+		{58166FE6-667F-40CC-8049-F69F37F637C6}.Release|Win32.ActiveCfg = Release|Win32
+		{58166FE6-667F-40CC-8049-F69F37F637C6}.Release|Win32.Build.0 = Release|Win32
+		{DAEFEAE3-E64A-4953-B629-8A1424FABC70}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DAEFEAE3-E64A-4953-B629-8A1424FABC70}.Debug|Win32.Build.0 = Debug|Win32
+		{DAEFEAE3-E64A-4953-B629-8A1424FABC70}.Release|Win32.ActiveCfg = Release|Win32
+		{DAEFEAE3-E64A-4953-B629-8A1424FABC70}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{58166FE6-667F-40CC-8049-F69F37F637C6} = {AADA8719-AE49-44E8-9EAD-92CF90906C10}
+		{DAEFEAE3-E64A-4953-B629-8A1424FABC70} = {00AA53CE-4CB9-4B11-B70D-405C1E855A4B}
+	EndGlobalSection
+EndGlobal

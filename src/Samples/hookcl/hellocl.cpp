@@ -100,9 +100,9 @@ BOOL WINAPI DllMain(HINSTANCE hinst, DWORD dwReason, LPVOID reserved)
         error = DetourTransactionCommit();
 
 		if (error == NO_ERROR) {
-			Syelog(SYELOG_SEVERITY_INFORMATION, "hookcl.dll: Detoured CreateFile(): %d\n", error);
+			Syelog(SYELOG_SEVERITY_INFORMATION, "Detoured CreateFile(): %d\n", error);
 		} else {
-			Syelog(SYELOG_SEVERITY_INFORMATION, "hookcl.dll: Error detouring CreateFile(): %d\n", error);
+			Syelog(SYELOG_SEVERITY_INFORMATION, "Error detouring CreateFile(): %d\n", error);
         }
 
 		s_bLog = TRUE;
@@ -115,7 +115,7 @@ BOOL WINAPI DllMain(HINSTANCE hinst, DWORD dwReason, LPVOID reserved)
 		DetourDetach(&(PVOID&)Real_CreateFileW, Mine_CreateFileW);
         error = DetourTransactionCommit();
 
-		Syelog(SYELOG_SEVERITY_INFORMATION, "hookcl.dll: Removed CreateFile(): %d\n", error);
+		Syelog(SYELOG_SEVERITY_INFORMATION, "Removed CreateFile(): %d\n", error);
 
 		SyelogClose(FALSE);
     }

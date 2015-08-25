@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\src\DetourLib\creatwth.cpp" />
-    <ClCompile Include="..\..\src\DetourLib\detours.cpp" />
-    <ClCompile Include="..\..\src\DetourLib\disasm.cpp" />
-    <ClCompile Include="..\..\src\DetourLib\image.cpp" />
-    <ClCompile Include="..\..\src\DetourLib\modules.cpp" />
-    <ClCompile Include="..\..\src\DetourLib\uimports.cpp" />
+    <ClCompile Include="..\..\src\Libs\DetourLib\creatwth.cpp" />
+    <ClCompile Include="..\..\src\Libs\DetourLib\detours.cpp" />
+    <ClCompile Include="..\..\src\Libs\DetourLib\disasm.cpp" />
+    <ClCompile Include="..\..\src\Libs\DetourLib\image.cpp" />
+    <ClCompile Include="..\..\src\Libs\DetourLib\modules.cpp" />
+    <ClCompile Include="..\..\src\Libs\DetourLib\uimports.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\DetourLib\detours.h" />
-    <ClInclude Include="..\..\src\DetourLib\detver.h" />
+    <ClInclude Include="..\..\src\Libs\DetourLib\detours.h" />
+    <ClInclude Include="..\..\src\Libs\DetourLib\detver.h" />
   </ItemGroup>
 </Project>

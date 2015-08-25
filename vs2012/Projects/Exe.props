@@ -8,12 +8,12 @@
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\src\Libs\DetourLib\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\src\Libs\DetourLib\;$(SolutionDir)..\src\Libs\SyelogLib\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;DETOURS_BITS=32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)..\Lib\$(Configuration)\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>DetourLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DetourLib.lib;SyelogLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />

@@ -14,6 +14,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "withdll", "Projects\withdll
 		{58166FE6-667F-40CC-8049-F69F37F637C6} = {58166FE6-667F-40CC-8049-F69F37F637C6}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "setdll", "Projects\setdll.vcxproj", "{A5B06C11-F4B3-48FE-881A-64960CC62F0A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{58166FE6-667F-40CC-8049-F69F37F637C6} = {58166FE6-667F-40CC-8049-F69F37F637C6}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -28,6 +33,10 @@ Global
 		{DAEFEAE3-E64A-4953-B629-8A1424FABC70}.Debug|Win32.Build.0 = Debug|Win32
 		{DAEFEAE3-E64A-4953-B629-8A1424FABC70}.Release|Win32.ActiveCfg = Release|Win32
 		{DAEFEAE3-E64A-4953-B629-8A1424FABC70}.Release|Win32.Build.0 = Release|Win32
+		{A5B06C11-F4B3-48FE-881A-64960CC62F0A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A5B06C11-F4B3-48FE-881A-64960CC62F0A}.Debug|Win32.Build.0 = Debug|Win32
+		{A5B06C11-F4B3-48FE-881A-64960CC62F0A}.Release|Win32.ActiveCfg = Release|Win32
+		{A5B06C11-F4B3-48FE-881A-64960CC62F0A}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,5 +44,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{58166FE6-667F-40CC-8049-F69F37F637C6} = {AADA8719-AE49-44E8-9EAD-92CF90906C10}
 		{DAEFEAE3-E64A-4953-B629-8A1424FABC70} = {00AA53CE-4CB9-4B11-B70D-405C1E855A4B}
+		{A5B06C11-F4B3-48FE-881A-64960CC62F0A} = {00AA53CE-4CB9-4B11-B70D-405C1E855A4B}
 	EndGlobalSection
 EndGlobal

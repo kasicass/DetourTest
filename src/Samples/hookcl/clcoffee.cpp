@@ -170,8 +170,10 @@ BOOL WINAPI DllMain(HINSTANCE hinst, DWORD dwReason, LPVOID reserved)
 		const char* xorvalueStr = getenv("CLCOFFEE_VALUE");
 		const char* fileStr = getenv("CLCOFFEE_FILE");
 
-		XORVALUE = hex2dec(xorvalueStr[0])*16 + hex2dec(xorvalueStr[1]);
-		SOURCEFILE = cstr2wstr(fileStr);
+		if (xorvalueStr && fileStr) {
+			XORVALUE = hex2dec(xorvalueStr[0])*16 + hex2dec(xorvalueStr[1]);
+			SOURCEFILE = cstr2wstr(fileStr);
+		}
 
 #if defined(USE_SYELOG)
 		// open log

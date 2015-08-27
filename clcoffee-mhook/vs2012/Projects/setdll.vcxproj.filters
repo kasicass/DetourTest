@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\src\setdll\setdll.cpp" />
+    <ClCompile Include="..\..\src\setdll\creatwth.cpp">
+      <Filter>Detours</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\setdll\detours.cpp">
+      <Filter>Detours</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\setdll\disasm.cpp">
+      <Filter>Detours</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\setdll\image.cpp">
+      <Filter>Detours</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\setdll\modules.cpp">
+      <Filter>Detours</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\setdll\uimports.cpp">
+      <Filter>Detours</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Detours">
+      <UniqueIdentifier>{fa1ff98f-5327-4bb9-863b-9a1f4589cbc8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\setdll\detours.h">
+      <Filter>Detours</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\setdll\detver.h">
+      <Filter>Detours</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

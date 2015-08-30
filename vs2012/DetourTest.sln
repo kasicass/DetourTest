@@ -74,6 +74,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "clcoffee", "Projects\clcoff
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "touchcpp", "Projects\touchcpp.vcxproj", "{86DED78F-B2B6-45FA-9008-DB1F17C29A70}"
+	ProjectSection(ProjectDependencies) = postProject
+		{10C11325-E993-4C67-BCA7-A5EC917091EA} = {10C11325-E993-4C67-BCA7-A5EC917091EA}
+		{58166FE6-667F-40CC-8049-F69F37F637C6} = {58166FE6-667F-40CC-8049-F69F37F637C6}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

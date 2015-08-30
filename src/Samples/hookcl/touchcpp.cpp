@@ -6,7 +6,7 @@
 #include <assert.h>
 #include <ctype.h>
 
-void TouchHelloCpp(const char* filename, unsigned char xorvalue)
+void TouchHelloCpp(const char* filename, unsigned char *xorvalue, size_t valuelen)
 {
 	const char src[] = "#include <iostream>\n"
 		"int main() {\n"
@@ -16,10 +16,13 @@ void TouchHelloCpp(const char* filename, unsigned char xorvalue)
 
 	FILE *fp = fopen(filename, "wb");
 
+	size_t j = 0;
 	size_t n = strlen(src);
 	for (size_t i = 0; i < n; ++i)
 	{
-		fputc(src[i] ^ xorvalue, fp);
+		fputc(src[i] ^ xorvalue[j], fp);
+		++j;
+		if (j == valuelen) j = 0;
 	}
 
 	fclose(fp);
@@ -47,13 +50,24 @@ int main()
 	
 	size_t len1 = strlen(xorvalueStr);
 	size_t len2 = strlen(fileStr);
-	assert(len1 == 2);
+	assert(len1 >= 2 && len1%2 == 0);
 	assert(len2 > 0);
 
-	unsigned char xorvalue = hex2dec(xorvalueStr[0])*16 + hex2dec(xorvalueStr[1]);
-	printf("CLCOFFEE_VALUE: 0x%X\n", xorvalue);
-	printf("CLCOFFEE_FILE: %s\n", fileStr);
-	TouchHelloCpp(fileStr, xorvalue);
+	size_t valuelen = len1 / 2;
+	unsigned char *xorvalue = (unsigned char*)malloc(valuelen);
+	for (size_t i = 0; i < len1; i+=2)
+		xorvalue[i/2] = hex2dec(xorvalueStr[i])*16 + hex2dec(xorvalueStr[i+1]);
+	
+	printf("CLCOFFEE_VALUE: ");
+	for (size_t j = 0; j < valuelen; ++j)
+	{
+		printf("%d ", xorvalue[j]);
+	}
+	printf("\n");
 
+	printf("CLCOFFEE_FILE: %s\n", fileStr);
+	TouchHelloCpp(fileStr, xorvalue, valuelen);
+
+	free(xorvalue);
 	return 0;
 }

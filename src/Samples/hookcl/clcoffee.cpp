@@ -1,10 +1,10 @@
 // test modify cl.exe's CreateFile/ReadFile
 //
 // start syelogd.exe test.txt
-// set CLCOFFEE_VALUE=AE            # xor value
+// set CLCOFFEE_VALUE=DEADBEEF1234  # xor value (strlen == mutiple of 2)
 // set CLCOFFEE_FILE=D:\Hello.cpp   # compiling filename
 // touchcpp.exe
-// withdll.exe -d:clcoffee.dll cl.exe d:\Hello.cpp
+// withdll.exe -d:clcoffee.dll cl.exe D:\Hello.cpp
 
 #ifdef _DEBUG
 #define USE_SYELOG
@@ -75,7 +75,9 @@ extern "C" {
 }
 
 static HANDLE s_SourceFileHandle = 0;
-static unsigned char XORVALUE = 0;
+static unsigned char *XORVALUE = 0;
+static size_t XORVALUELEN = 0;
+static size_t XORINDEX = 0;
 static wchar_t* SOURCEFILE = 0;
 
 HANDLE WINAPI Mine_CreateFileW(LPCWSTR a0, DWORD a1, DWORD a2, LPSECURITY_ATTRIBUTES a3, DWORD a4, DWORD a5, HANDLE a6)
@@ -105,7 +107,9 @@ BOOL WINAPI Mine_ReadFile(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfBytesToR
 
 		for (DWORD i = 0; i < *lpNumberOfBytesRead; ++i)
 		{
-			((BYTE*)lpBuffer)[i] ^= XORVALUE;
+			((BYTE*)lpBuffer)[i] ^= XORVALUE[XORINDEX];
+			++XORINDEX;
+			if (XORINDEX == XORVALUELEN) XORINDEX = 0;
 		}
 	}
 	return ok;
@@ -171,13 +175,24 @@ BOOL WINAPI DllMain(HINSTANCE hinst, DWORD dwReason, LPVOID reserved)
 		const char* fileStr = getenv("CLCOFFEE_FILE");
 
 		if (xorvalueStr && fileStr) {
-			XORVALUE = hex2dec(xorvalueStr[0])*16 + hex2dec(xorvalueStr[1]);
+			size_t slen = strlen(xorvalueStr);
+			XORVALUELEN = slen/2;
+
+			XORINDEX = 0;
+			XORVALUE = (unsigned char*)malloc(XORVALUELEN);
+			for (size_t i = 0; i < slen; i+=2)
+				XORVALUE[i/2] = hex2dec(xorvalueStr[i])*16 + hex2dec(xorvalueStr[i+1]);
+
 			SOURCEFILE = cstr2wstr(fileStr);
 		}
 
 #if defined(USE_SYELOG)
-		// open log
-		Syelog(SYELOG_SEVERITY_INFORMATION, "XORVALUE: 0x%X, SOURCEFILE: %ls\n", XORVALUE, SOURCEFILE);
+		for (size_t j = 0; j < XORVALUELEN; ++j)
+		{
+			Syelog(SYELOG_SEVERITY_INFORMATION, "XORVALUE #%u: %d\n", j, XORVALUE[j]);
+		}
+
+		Syelog(SYELOG_SEVERITY_INFORMATION, "SOURCEFILE: %ls\n", SOURCEFILE);
 #endif
 
 		// detour it
@@ -206,8 +221,8 @@ BOOL WINAPI DllMain(HINSTANCE hinst, DWORD dwReason, LPVOID reserved)
 		DetourDetach(&(PVOID&)Real_CloseHandle, Mine_CloseHandle);
         error = DetourTransactionCommit();
 
-		free(SOURCEFILE);
-		SOURCEFILE = 0;
+		free(XORVALUE); XORVALUE = 0;
+		free(SOURCEFILE); SOURCEFILE = 0;
 
 #if defined(USE_SYELOG)
 		Syelog(SYELOG_SEVERITY_INFORMATION, "Removed detour: %d\n", error);

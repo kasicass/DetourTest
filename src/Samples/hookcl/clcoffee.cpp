@@ -88,6 +88,7 @@ HANDLE WINAPI Mine_CreateFileW(LPCWSTR a0, DWORD a1, DWORD a2, LPSECURITY_ATTRIB
 		Syelog(SYELOG_SEVERITY_INFORMATION, "CreateFileW(): %ls", a0);
 #endif
 
+		XORINDEX = 0;  // IMPORTANT: cl.exe may open the source file twice~ reset XORINDEX here~
 		s_SourceFileHandle = Real_CreateFileW(a0, a1, a2, a3, a4, a5, a6);
 		return s_SourceFileHandle;
 	}
